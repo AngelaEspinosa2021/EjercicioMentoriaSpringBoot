@@ -3,7 +3,7 @@ package com.crud.democrud.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "/usuario")
+@Table(name = "usuario")
 public class UsuarioModel {
 
     @Id
@@ -14,6 +14,16 @@ public class UsuarioModel {
     private String nombre;
     private String email;
     private Integer prioridad;
+
+    public UsuarioModel(String nombre, String email, Integer prioridad) {
+        this.nombre = nombre;
+        this.email = email;
+        this.prioridad = prioridad;
+    }
+
+    public UsuarioModel() {
+
+    }
 
     public void setPrioridad(Integer prioridad) {
         this.prioridad = prioridad;
@@ -43,18 +53,14 @@ public class UsuarioModel {
         return email;
     }
 
-    public UsuarioModel(String nombre, String email, Integer prioridad) {
-        this.nombre = nombre;
-        this.email = email;
-        this.prioridad = prioridad;
-    }
-
-    public UsuarioModel() {
-
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public void mapUsuario(UsuarioModel usuario){
+        this.setId(usuario.id);
+        this.setNombre(usuario.nombre);
+        this.setEmail(usuario.email);
+        this.setPrioridad(usuario.prioridad);
+    }
 }
