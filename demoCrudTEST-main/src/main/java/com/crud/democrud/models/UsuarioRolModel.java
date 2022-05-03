@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "usuariorol")
-public class UsuarioRol {
+public class UsuarioRolModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,11 +18,11 @@ public class UsuarioRol {
     @JoinColumn(name="idUsuario")
     private UsuarioModel usuario;
 
-    public UsuarioRol() {
+    public UsuarioRolModel() {
 
     }
 
-    public UsuarioRol(String rol, UsuarioModel usuario) {
+    public UsuarioRolModel(String rol, UsuarioModel usuario) {
         Rol = rol;
         this.usuario = usuario;
     }
