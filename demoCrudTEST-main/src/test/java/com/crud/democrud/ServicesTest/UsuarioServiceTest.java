@@ -41,10 +41,30 @@ public class UsuarioServiceTest {
     }
 
     @Test
+    public void testModificarUsuario(){
+        Long idBuscado=1L;
+        UsuarioModel usuarioModelAModificar=usuarioRepository.findById(idBuscado).get();
+        usuarioModelAModificar.mapUsuario(usuarioModelAModificar);
+        UsuarioModel usuarioYaModificado = usuarioRepository.save(usuarioModelAModificar);
+        assertEquals(usuarioModelAModificar.getId(),usuarioYaModificado.getId(),0);
+        assertNotEquals(usuarioModelAModificar.getNombre(),usuarioYaModificado.getNombre());
+        assertNotEquals(usuarioModelAModificar.getEmail(),usuarioYaModificado.getEmail());
+        assertNotEquals(usuarioModelAModificar.getPrioridad(),usuarioYaModificado.getPrioridad(),0);
+
+    }
+
+
+    @Test
     public void testEliminarUsuario(){
         Long idBuscado=1L;
-
-        List<UsuarioModel> usuarioModelList=(List<UsuarioModel>) usuarioRepository.findAll();
-        assertThat(usuarioModelList).size().isGreaterThan(0);
+        UsuarioModel usuarioAEliminar=usuarioRepository.findById(idBuscado).get();
+        try{
+            usuarioRepository.deleteById(idBuscado);
+        }
+        catch(Exception ex){
+            System.out.println("El usuario no se pudo eliminar.");
+        }
+        UsuarioModel usuarioEliminado=usuarioRepository.findById(idBuscado).get();
+        assertNotEquals(usuarioAEliminar,usuarioEliminado);
     }
 }
