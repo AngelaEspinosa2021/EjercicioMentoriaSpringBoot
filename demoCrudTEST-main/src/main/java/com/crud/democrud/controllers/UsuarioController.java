@@ -30,7 +30,7 @@ public class UsuarioController {
         return this.usuarioService.obtenerUsuarioPorId(id);
     }
 
-    @GetMapping(path ="/editar/{id}")
+    @PostMapping(path ="/editar/{id}")
     public UsuarioModel modificarUsuario(@PathVariable("id") Long id, UsuarioModel usuario)throws Exception{
         return this.usuarioService.modificarUsuario(usuario, id);
     }
