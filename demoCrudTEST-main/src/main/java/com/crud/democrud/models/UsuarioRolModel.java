@@ -50,4 +50,10 @@ public class UsuarioRolModel {
     public void setUsuario(UsuarioModel usuario) {
         this.usuario = usuario;
     }
+
+    public void mapRol(UsuarioRolModel rol){
+        this.setIdRol(rol.idRol);
+        this.setRol(rol.Rol);
+        this.setUsuario(rol.usuario);
+    }
 }
